@@ -1,0 +1,138 @@
+public class Adventure //class names
+{
+    //all privates I am using
+    private int choice1, choice2, choice3;
+    private int choice1ans, choice2ans, choice3ans;
+    private boolean choice1status, choice2status, choice3status;
+    private String choice1Options, choice2Options, choice3Options;
+    public Adventure()
+    {
+        //the correct choices
+        choice1ans = 2;
+        choice2ans = 1;
+        choice3ans = 3;
+        
+    }
+    public int performValidation(String a)
+    {
+        boolean numeric = true;
+        int choice2;
+        try {
+            choice2 = Integer.parseInt(a);
+        } catch (NumberFormatException e) {
+            choice2 = -1;
+        }
+        
+        return choice2>0?choice2:-1;
+        
+        
+    }
+    //the choiceXOption method just displays the options available
+    public String getChoice1Options()
+    {
+      choice1Options = ("1) Decide not to put on a mask\n" +
+        "2) Wear a mask\n" + "3) Decide to attend a protest that opposes the use of masks");
+      return choice1Options;  
+    }
+    
+    // the setChoiceX method to set the users input
+    public void setChoice1(int ch1)
+    {
+        choice1 = ch1;
+        
+    }
+    //the get choiceX method, to return the user input for later use
+    public int getChoice1()
+    {
+        
+        return choice1;
+    }
+    //the checkChoiceX method. to check if the user entered the right thing
+    public void checkChoice1()
+    {
+        if (getChoice1() == choice1ans)
+        {
+            choice1status = true;
+        }
+        else
+        {
+            choice1status = false;
+            
+        }
+        
+    }
+    // the AuthX method, getting the status of the users input
+    public boolean Auth1()
+    {
+        
+       return choice1status; 
+    }
+    //rinse and repeat with all the other methods...
+    public void setChoice2(int ch2)
+    {
+        choice2 = ch2;
+        
+    }
+    public int getChoice2()
+    {
+        return choice2;
+        
+    }
+    public String getChoice2Options()
+    {
+        choice2Options = ("1) Go home\n" + "2) Stay in times square\n" 
+        + "3) Go to a party\n");
+        return choice2Options;
+    }
+    public void checkChoice2()
+    {
+        if (getChoice2() == choice2ans)
+        {
+            choice2status = true;
+            
+        }
+        else
+        {
+            
+            choice2status = false;
+        }
+    }
+    public boolean Auth2()
+    {
+       return choice2status; 
+        
+    }
+    public void setChoice3(int ch3)
+    {
+        choice3 = ch3;
+        
+    }
+    public int getChoice3()
+    {
+        return choice3;
+        
+    }
+    public void checkChoice3()
+    {
+        if (getChoice3() == choice3ans)
+        {
+            choice2status = true;
+            
+        }
+        else
+        {
+            
+            choice2status = false;
+        }
+    }
+    public String getChoice3Options()
+    {
+       choice3Options = (" 1)Spread misinformation on social media  \n 2) Decide to invite some people over for a dinner party \n 3)Sit on the couch and watch the news to stay informed");
+       return choice3Options; 
+    }
+    public boolean Auth3()
+    {
+       return choice2status; 
+        
+    }
+}
