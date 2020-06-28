@@ -1,0 +1,111 @@
+import javax.swing.JOptionPane; //import statement for the dialog boxes
+import javax.swing.ImageIcon; //import statement so I can display images
+public class CopyofAdventureMacro// class name
+{
+    public static void main(String args [])
+    {
+    //all images that are going to be used
+    ImageIcon timesSquare = new ImageIcon("MacroImages/timesSqaure.png"); //done 
+    ImageIcon coughing = new ImageIcon("MacroImages/oldPersonCoughing.png"); //done
+    ImageIcon thinking = new ImageIcon("MacroImages/thinking.png"); //done
+    ImageIcon livingRoom = new ImageIcon("MacroImages/livingRoom.png"); //done
+    ImageIcon protest = new ImageIcon("MacroImages/protest.png"); //done
+    ImageIcon party = new ImageIcon("MacroImages/partyImage.png"); //done
+    ImageIcon badMedia = new ImageIcon("MacroImages/badMedia.png");
+    ImageIcon dinnerParty = new ImageIcon("MacroImages/dinnerParty.png");
+    ImageIcon victory = new ImageIcon("MacroImages/victoryScreen.png");
+    Adventure ad = new Adventure();
+    //first choice
+     String inputString1 = (String)JOptionPane.showInputDialog(null, "You find yourself in times square... \n" 
+    + "You see that you are in a futuristic hallway. What do you do? \n\n Choose an option 1,2, or 3. Only enter the number. \n\n"
+    + ad.getChoice1Options(), "Choose Your Own Adventure!", JOptionPane.PLAIN_MESSAGE, timesSquare, null,"");
+    //getting input and setting the user input
+    //int choice1 = Integer.parseInt(inputString1);
+    int choice1 = ad.performValidation( inputString1);
+        if(choice1 ==-1)
+        {
+            JOptionPane.showMessageDialog(null, "Not a valid input!","Choose Your Own Adventure!",1);
+        }
+     
+         
+    ad.setChoice1(choice1);
+    ad.checkChoice1();
+    if (ad.Auth1() == true) //checking to see if the user entered the correct choice for the first choice
+    {
+        String inputString2 = (String)JOptionPane.showInputDialog(null, "You decide to put on a mask...\n What will you do next?\n "
+        + ad.getChoice2Options(), "Choose Your Own Adventure!",JOptionPane.PLAIN_MESSAGE,thinking,null,""); //second choice
+        //checking the user input...
+       
+        int choice2 = ad.performValidation( inputString2);
+        if(choice2 ==-1)
+        {
+            JOptionPane.showMessageDialog(null, "Not a valid input!","Choose Your Own Adventure!",1);
+        }
+        ad.setChoice2(choice2);
+        ad.checkChoice2();
+         
+        if (ad.Auth2() == true) //checking to see if the user entered the correct choice for the second choice
+        {
+           String inputString3 = (String)JOptionPane.showInputDialog(null, "You decide to drive to your house "
+           + "you arrive at home\n" +
+           "What will you do?\n\n" + ad.getChoice3Options(), "Choose Your Own Adventure!", JOptionPane.PLAIN_MESSAGE, livingRoom,null,"");//third and final choice
+            //checking the user input...
+          // int choice3 = Integer.parseInt(inputString3);
+           int choice3 = ad.performValidation( inputString3);
+        if(choice3 ==-1)
+        {
+            JOptionPane.showMessageDialog(null, "Not a valid input!","Choose Your Own Adventure!",1);
+        }
+        
+         
+           ad.setChoice3(choice3);
+           ad.checkChoice3();
+           if (ad.Auth3() == true) //victory
+           {
+               JOptionPane.showMessageDialog(null, "You decide to self isolate and aabide to social distancing while keeping yourself informed on the issue.\n" 
+               + "CONGRATULATIONS!!","Choose Your Own Adventure!",JOptionPane.PLAIN_MESSAGE, victory);
+               
+               
+           }
+           else if (ad.Auth3() == false && ad.getChoice3() == 1) //bad scenario
+           {
+               JOptionPane.showMessageDialog(null, "You decide to spread misninformation on social media, confusing people and inducing paranoia in the population\n\nTHE END!!!","Choose Your Own Adventure!",JOptionPane.WARNING_MESSAGE, badMedia);
+               
+           }
+           else if (ad.Auth3() == false && ad.getChoice3() == 2) //bad scenario
+           {
+               
+              JOptionPane.showMessageDialog(null, "You decide to invite people over for a dinner party, thereby spreading the virus and breaking social distancing guidlines...\n\nTHE END!","Choose Your Own Adventure!",JOptionPane.PLAIN_MESSAGE, dinnerParty);
+               
+            }
+        }
+        else if (ad.Auth2() == false && ad.getChoice2() == 2) //bad scenario
+        {
+            JOptionPane.showMessageDialog(null, "You decide to stay in times square, increasing the spread of the virus\n" + "THE END!","Choose Your Own Adventure!",JOptionPane.WARNING_MESSAGE,timesSquare);
+            
+            
+        }
+        else if (ad.Auth2() == false && ad.getChoice2() == 3) //bad scenario
+        {
+            JOptionPane.showMessageDialog(null, "You decide to go to a party without regard for the people around you, and inadvertenly spread the virus to people around you!\n"
+            + "THE END!","Choose Your Own Adventure!",JOptionPane.WARNING_MESSAGE, party);
+            
+            
+            
+            
+        }
+    }
+    else if (ad.Auth1() == false && ad.getChoice1() == 1) //bad scenario
+    {
+      JOptionPane.showMessageDialog(null, "You are asymptomatic to the coronavirus and pass it on to people who cannot fight it..." +
+      "\nTHE END!",
+      "Choose Your Own Adventure!",JOptionPane.WARNING_MESSAGE,coughing);
+    }
+    else if (ad.Auth1() == false && ad.getChoice1() == 3) //bad scenario
+    {
+        JOptionPane.showMessageDialog(null, "You decide to attend a protest, therefore potentially helping the spread of the virus.\n" +
+        "\n THE END!","Choose Your Own Adventure!", JOptionPane.WARNING_MESSAGE, protest);
+        
+    }
+}
+}
